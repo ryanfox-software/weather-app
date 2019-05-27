@@ -3,10 +3,12 @@ import Titles from "./components/Titles";
 import Weather from "./components/Weather";
 import Table from "./components/Table";
 
+
 const API_KEY = "aa1576da92d23ebbe8e2de9391fc5899";
 
 class App extends React.Component{
   state = {
+    allowDups: false,
     list: [],
   }
 
@@ -14,19 +16,34 @@ class App extends React.Component{
     const city = e.value;
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},us&appid=${API_KEY}&units=imperial`);
     const data = await api_call.json();
-    //console.log(data);
-    if(this.state.list == null){
+    this.updateState(data,city);
+    console.log("updated list: ");
+    console.log(this.state.list);
+  }
+  updateState = async (data, city) => {
+    const tempList = this.state.list.slice();
+    if(tempList.length == null){//adding first element
       this.setState({
         list:{city: city, temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description}
       });
+      return;
     }
-    else{
+    else{//concating to an already existing list
+      if(this.state.allowDups === false){
+        for(let i = 0; i < tempList.length; ++i){
+          if(tempList[i].city === city){
+            tempList[i] = {city: city, temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description};
+            this.setState({
+              list: tempList
+            });
+            return;
+          }
+        }
+      }
       this.setState({
         list: this.state.list.concat([{city: city, temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description}])
       });
     }
-
-    console.log(this.state.list);
   }
 
 //setting up props for weather.js from our app state
@@ -37,8 +54,11 @@ class App extends React.Component{
         <Weather
           getWeather={this.getWeather}
         />
-        <Table
-          list ={this.state.list}/>
+        <div>
+          <Table
+            list ={this.state.list}/>
+
+        </div>
       </div>
     );
   }

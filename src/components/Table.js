@@ -32,7 +32,7 @@ const columns = [
 	/>,
 ];
 
-class Titles extends React.Component {
+class Table extends React.Component {
 
   static displayName = 'WeatherDataTable';
 
@@ -56,4 +56,4 @@ class Titles extends React.Component {
   }
 };
 
-export default Titles;
+export default Table;

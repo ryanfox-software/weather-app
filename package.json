@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@salesforce-ux/design-system": "^2.9.3",
+    "@salesforce/babel-preset-design-system-react": "^3.0.0",
     "@salesforce/design-system-react": "^0.10.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
