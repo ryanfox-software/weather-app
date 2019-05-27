@@ -6,7 +6,7 @@ const columns = [
 	<DataTableColumn
 		key="city"
 		label="City Name"
-		property="cityName"
+		property="city"
 		width="6em"
 	/>,
 
@@ -34,26 +34,18 @@ const columns = [
 
 class Titles extends React.Component {
 
-  static displayName = 'DataTableExample';
-
-	state = {
-		items: [
-			{
-
-      }
-    ]
-	};
+  static displayName = 'WeatherDataTable';
 
   render(){
     return (
       <IconSettings iconPath="/assets/icons">
       				<div style={{ overflow: 'auto' }}>
       					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-      						Basic Fixed Layout
+      						Weather Data Table
       					</h3>
       					<DataTable
-      						items={this.state.items}
-      						id="DataTableExample-1-default"
+      						items={this.props.list}
+      						id="WeatherDataTable"
       						fixedLayout
       					>
       						{columns}
