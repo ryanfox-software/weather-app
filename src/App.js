@@ -17,8 +17,6 @@ class App extends React.Component{
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},us&appid=${API_KEY}&units=imperial`);
     const data = await api_call.json();
     this.updateState(data,city);
-    console.log("updated list: ");
-    console.log(this.state.list);
   }
   updateState = async (data, city) => {
     const tempList = this.state.list.slice();
@@ -45,6 +43,19 @@ class App extends React.Component{
       });
     }
   }
+  updateDup = async (e) =>{
+    var b = false;
+    if(e.value === "true"){
+      b = true;
+    }
+    else{
+      b = false;
+    }
+    this.setState({
+      allowDups: b
+    });
+    
+  }
 
 //setting up props for weather.js from our app state
   render(){
@@ -53,11 +64,11 @@ class App extends React.Component{
         <Titles />
         <Weather
           getWeather={this.getWeather}
+          updateDup={this.updateDup}
         />
         <div>
           <Table
             list ={this.state.list}/>
-
         </div>
       </div>
     );

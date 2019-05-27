@@ -5,6 +5,7 @@ class Weather extends React.Component{
 
   render(){
     return (
+      <div>
 			<IconSettings iconPath="/assets/icons">
 				<Dropdown
 					align="right"
@@ -26,6 +27,28 @@ class Weather extends React.Component{
 					</DropdownTrigger>
 				</Dropdown>
 			</IconSettings>
+
+      <IconSettings iconPath="/assets/icons">
+				<Dropdown
+					align="right"
+          onSelect={this.props.updateDup}
+					options={[
+						{ label: 'Yes', value: 'true' },
+						{ label: 'No', value: 'false' },
+					]}
+				>
+					<DropdownTrigger>
+						<Button
+							iconCategory="utility"
+							iconName="down"
+							iconPosition="right"
+							label="Allow Duplicates"
+						/>
+					</DropdownTrigger>
+				</Dropdown>
+			</IconSettings>
+
+      </div>
 		);
   }
 };
