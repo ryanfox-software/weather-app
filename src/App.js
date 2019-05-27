@@ -2,7 +2,7 @@ import React from "react";
 import Titles from "./components/Titles";
 import Weather from "./components/Weather";
 import Table from "./components/Table";
-
+import './App.css';
 
 const API_KEY = "aa1576da92d23ebbe8e2de9391fc5899";
 
@@ -17,6 +17,7 @@ class App extends React.Component{
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},us&appid=${API_KEY}&units=imperial`);
     const data = await api_call.json();
     this.updateState(data,city);
+    console.log(data);
   }
   updateState = async (data, city) => {
     const tempList = this.state.list.slice();
@@ -60,7 +61,7 @@ class App extends React.Component{
 //setting up props for weather.js from our app state
   render(){
     return(
-      <div>
+      <div className="myTitle">
         <Titles />
 
         <div>
