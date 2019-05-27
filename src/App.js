@@ -54,7 +54,7 @@ class App extends React.Component{
     this.setState({
       allowDups: b
     });
-    
+
   }
 
 //setting up props for weather.js from our app state
@@ -62,13 +62,15 @@ class App extends React.Component{
     return(
       <div>
         <Titles />
-        <Weather
-          getWeather={this.getWeather}
-          updateDup={this.updateDup}
-        />
+
         <div>
           <Table
-            list ={this.state.list}/>
+            list ={this.state.list}
+          />
+          <Weather
+            getWeather={this.getWeather}
+            updateDup={this.updateDup}
+            />
         </div>
       </div>
     );
