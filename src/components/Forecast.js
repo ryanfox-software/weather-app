@@ -3,10 +3,22 @@ import React from "react";
 class Titles extends React.Component {
   render(){
     return (
-      <div className="title">
-
-        <h1>Current Weather Report</h1>
-        {/*<p>Displays weather conditions</p>*/}
+      <div className="forecast">
+      <div className="forecastpanel1">
+        Current Weather Report
+      </div>
+      <div className="forecastpanel2">
+        Current Weather Report
+      </div>
+      <div className="forecastpanel3">
+        Current Weather Report
+      </div>
+      <div className="forecastpanel4">
+        Current Weather Report
+      </div>
+      <div className="forecastpanel5">
+        Current Weather Report
+      </div>
       </div>
     );
   }

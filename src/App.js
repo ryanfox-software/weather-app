@@ -3,6 +3,7 @@ import Titles from "./components/Titles";
 import Weather from "./components/Weather";
 import Table from "./components/Table";
 import WeatherCarousel from "./components/WeatherCarousel";
+import Forecast from "./components/Forecast";
 import './App.css';
 
 const API_KEY = "aa1576da92d23ebbe8e2de9391fc5899";
@@ -11,13 +12,19 @@ class App extends React.Component{
   state = {
     allowDups: false,
     list: [],
+    selection: undefined,
   }
 
   getWeather = async (e) => {
-    const city = e.value;
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},us&appid=${API_KEY}&units=imperial`);
-    const data = await api_call.json();
+    var city = e.value;
+    var api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},us&appid=${API_KEY}&units=imperial`);
+    var data = await api_call.json();
     this.updateState(data,city);
+    api_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},us&appid=${API_KEY}&units=imperial`);
+    data = await api_call.json();
+    this.setState({
+      selection: data
+    });
     console.log(data);
   }
   updateState = async (data, city) => {
@@ -74,6 +81,9 @@ class App extends React.Component{
         <br></br>
         <WeatherCarousel
           list={this.state.list}
+        />
+        <Forecast
+          data={this.state.selection}
         />
       </html>
     );

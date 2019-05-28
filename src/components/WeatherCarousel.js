@@ -46,7 +46,7 @@ class WeatherCarousel extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div
 					style={{
-						maxWidth: '800px',
+						maxWidth: '44%',
 					}}className="carousel"
 				>
 

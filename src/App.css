@@ -22,12 +22,12 @@
   padding: 20px;
   padding-top: 30px;
   padding-bottom: 10px;
-  left: 55%;
+  left: 57%;
+  top: 10%;
 }
 
 .dropdownMenus{
   position: absolute;
-  padding: 10px;
   padding-top: 70px;
   padding-bottom: 10px;
   left: 45%;
@@ -36,6 +36,60 @@
 .carousel{
   font-size: 20px;
   padding: 5px;
-  padding-top: 10px;
+  padding-top: 35px;
   padding-bottom: 5px;
+}
+
+.forecast{
+  position:absolute;
+  left:0;
+  right:0;
+  height: 30%;
+  top: 50%;
+}
+.forecastpanel1{
+  position: absolute;
+  padding:10px;
+  left:5%;
+  height: 100%;
+  width: 13%;
+  text-align: center;
+  background-color: white;
+}
+.forecastpanel2{
+  position: absolute;
+  padding:10px;
+  left:24%;
+  height: 100%;
+  width: 13%;
+  text-align: center;
+  background-color: white;
+}
+.forecastpanel3{
+  position: absolute;
+  padding:10px;
+  left:43%;
+  height: 100%;
+  width: 13%;
+  text-align: center;
+  background-color: white;
+}
+.forecastpanel4{
+  position: absolute;
+  padding:10px;
+  left:62%;
+  height: 100%;
+  width: 13%;
+  text-align: center;
+  background-color: white;
+}
+.forecastpanel5{
+  position: absolute;
+  position:absolute;
+  padding:10px;
+  left:80%;
+  height: 100%;
+  width: 13%;
+  text-align: center;
+  background-color: white;
 }
