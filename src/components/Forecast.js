@@ -13,6 +13,9 @@ class Titles extends React.Component {
     var mydata = this.props.data;
     //var temps = ["Weather Forecast not established. Please select city"];
     var temps = [15];
+    if(this.props.data == null){
+      this.props.getDefaultForecast();
+    }
     for(let i = 0; i < 15; i++){
       temps[i] = "";
       if(this.props.data != null){

@@ -13,6 +13,7 @@ class App extends React.Component{
     allowDups: false,
     list: [],
     selection: undefined,
+    default: [],
   }
 
   getWeather = async (e) => {
@@ -26,6 +27,34 @@ class App extends React.Component{
       selection: data
     });
     console.log(data);
+  }
+  getDefaultForecast = async()=>{
+    var myList = [];
+    var api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=milwaukee,us&appid=${API_KEY}&units=imperial`);
+    var data = await api_call.json();
+    myList.push({city: "milwaukee", temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description, icon: data.weather[0].icon});
+
+    api_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=milwaukee,us&appid=${API_KEY}&units=imperial`);
+    data = await api_call.json();
+    this.setState({
+      selection: data
+    });
+
+    api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=minneapolis,us&appid=${API_KEY}&units=imperial`);
+    data = await api_call.json();
+    myList.push({city: "minneapolis", temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description, icon: data.weather[0].icon});
+
+    api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=chicago,us&appid=${API_KEY}&units=imperial`);
+    data = await api_call.json();
+    myList.push({city: "chicago", temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description, icon: data.weather[0].icon});
+
+    api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=dallas,us&appid=${API_KEY}&units=imperial`);
+    data = await api_call.json();
+    myList.push({city: "dallas", temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description, icon: data.weather[0].icon});
+
+    this.setState({
+      default: myList
+    });
   }
   updateState = async (data, city) => {
     const tempList = this.state.list.slice();
@@ -80,10 +109,11 @@ class App extends React.Component{
         />
         <br></br>
         <WeatherCarousel
-          list={this.state.list}
+          list={this.state.default}
         />
         <Forecast
           data={this.state.selection}
+          getDefaultForecast={this.getDefaultForecast}
         />
       </html>
     );
