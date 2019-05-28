@@ -2,6 +2,7 @@ import React from "react";
 import Titles from "./components/Titles";
 import Weather from "./components/Weather";
 import Table from "./components/Table";
+import WeatherCarousel from "./components/WeatherCarousel";
 import './App.css';
 
 const API_KEY = "aa1576da92d23ebbe8e2de9391fc5899";
@@ -23,7 +24,7 @@ class App extends React.Component{
     const tempList = this.state.list.slice();
     if(tempList.length == null){//adding first element
       this.setState({
-        list:{city: city, temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description}
+        list:{city: city, temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description, icon: data.weather[0].icon}
       });
       return;
     }
@@ -31,7 +32,7 @@ class App extends React.Component{
       if(this.state.allowDups === false){
         for(let i = 0; i < tempList.length; ++i){
           if(tempList[i].city === city){
-            tempList[i] = {city: city, temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description};
+            tempList[i] = {city: city, temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description, icon: data.weather[0].icon};
             this.setState({
               list: tempList
             });
@@ -40,7 +41,7 @@ class App extends React.Component{
         }
       }
       this.setState({
-        list: this.state.list.concat([{city: city, temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description}])
+        list: this.state.list.concat([{city: city, temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description, icon: data.weather[0].icon}])
       });
     }
   }
@@ -61,19 +62,20 @@ class App extends React.Component{
 //setting up props for weather.js from our app state
   render(){
     return(
-      <div className="myTitle">
+      <html>
         <Titles />
-
-        <div>
-          <Table
-            list ={this.state.list}
-          />
-          <Weather
+        <Table
+            list = {this.state.list}
+        />
+        <Weather
             getWeather={this.getWeather}
             updateDup={this.updateDup}
-            />
-        </div>
-      </div>
+        />
+        <br></br>
+        <WeatherCarousel
+          list={this.state.list}
+        />
+      </html>
     );
   }
 };

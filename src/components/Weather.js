@@ -5,6 +5,7 @@ class Weather extends React.Component{
 
   render(){
     return (
+      <div className="dropdownMenus">
       <div>
 			<IconSettings iconPath="/assets/icons">
 				<Dropdown
@@ -27,7 +28,9 @@ class Weather extends React.Component{
 					</DropdownTrigger>
 				</Dropdown>
 			</IconSettings>
+</div>
 
+<div>
       <IconSettings iconPath="/assets/icons">
 				<Dropdown
 					align="right"
@@ -47,6 +50,7 @@ class Weather extends React.Component{
 					</DropdownTrigger>
 				</Dropdown>
 			</IconSettings>
+      </div>
 
       </div>
 		);

@@ -1,10 +1,10 @@
 import React from "react";
-
+import '../App.css';
 import { DataTable, DataTableColumn, DataTableCell, IconSettings } from '@salesforce/design-system-react';
 
 const columns = [
 	<DataTableColumn
-		key="city"
+		key="City"
 		label="City Name"
 		property="city"
 		width="6em"
@@ -12,21 +12,21 @@ const columns = [
 
 	<DataTableColumn
 		key="Temperature"
-		label="temperature"
+		label="Temperature"
 		property="temperature"
 		width="5em"
 	/>,
 
 	<DataTableColumn
 		key="Humidity"
-		label="humidity"
+		label="Humidity"
 		property="humidity"
 		width="5em"
 	/>,
 
 	<DataTableColumn
 		key="Description"
-		label="description"
+		label="Description"
 		property="description"
 		width="5em"
 	/>,
@@ -39,9 +39,9 @@ class Table extends React.Component {
   render(){
     return (
       <IconSettings iconPath="/assets/icons">
-      				<div style={{ overflow: 'auto' }}>
-      					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-      						Weather Data Table
+      				<div className="Table">
+      					<h3 className="head">
+      						
       					</h3>
       					<DataTable
       						items={this.props.list}

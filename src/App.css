@@ -1,0 +1,41 @@
+.title{
+  font-size: 25px;
+  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #F0EAD6
+}
+
+.mainBody{
+  position: absolute;
+  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  left: 50%;
+}
+.head{
+  font-size: 20px;
+}
+.Table{
+  font-size: 18px;
+  position: absolute;
+  padding: 20px;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  left: 55%;
+}
+
+.dropdownMenus{
+  position: absolute;
+  padding: 10px;
+  padding-top: 70px;
+  padding-bottom: 10px;
+  left: 45%;
+}
+
+.carousel{
+  font-size: 20px;
+  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
