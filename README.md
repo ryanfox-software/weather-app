@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Weather application using Create React app, lightning design system for react, and openweathermap api.
+Ryan Fox
+
 ## Available Scripts
 
 In the project directory, you can run:
