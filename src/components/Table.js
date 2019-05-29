@@ -1,6 +1,6 @@
 import React from "react";
 import '../App.css';
-import { DataTable, DataTableColumn, DataTableCell, IconSettings } from '@salesforce/design-system-react';
+import { DataTable, DataTableColumn, IconSettings } from '@salesforce/design-system-react';
 
 const columns = [
 	<DataTableColumn
@@ -41,7 +41,7 @@ class Table extends React.Component {
       <IconSettings iconPath="/assets/icons">
       				<div className="Table">
       					<h3 className="head">
-      						
+
       					</h3>
       					<DataTable
       						items={this.props.list}

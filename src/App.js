@@ -16,46 +16,53 @@ class App extends React.Component{
     default: [],
   }
 
+  fetchData = async (toFetch) =>{
+    try{
+      var res = await fetch(toFetch);
+      var json = await res.json();
+      return json;
+    } catch (e){
+      console.log(e);
+    }
+  }
+
+
   getWeather = async (e) => {
     var city = e.value;
-    var api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},us&appid=${API_KEY}&units=imperial`);
-    var data = await api_call.json();
+
+    var data = await this.fetchData(`http://api.openweathermap.org/data/2.5/weather?q=${city},us&appid=${API_KEY}&units=imperial`);
     this.updateState(data,city);
-    api_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},us&appid=${API_KEY}&units=imperial`);
-    data = await api_call.json();
+
+    data = await this.fetchData(`http://api.openweathermap.org/data/2.5/forecast?q=${city},us&appid=${API_KEY}&units=imperial`);
     this.setState({
       selection: data
     });
-    console.log(data);
   }
   getDefaultForecast = async()=>{
     var myList = [];
-    var api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=milwaukee,us&appid=${API_KEY}&units=imperial`);
-    var data = await api_call.json();
+
+    var data = await this.fetchData(`http://api.openweathermap.org/data/2.5/weather?q=milwaukee,us&appid=${API_KEY}&units=imperial`);
     myList.push({city: "milwaukee", temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description, icon: data.weather[0].icon});
 
-    api_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=milwaukee,us&appid=${API_KEY}&units=imperial`);
-    data = await api_call.json();
+    data = await this.fetchData(`http://api.openweathermap.org/data/2.5/forecast?q=milwaukee,us&appid=${API_KEY}&units=imperial`);
     this.setState({
       selection: data
     });
 
-    api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=minneapolis,us&appid=${API_KEY}&units=imperial`);
-    data = await api_call.json();
+    data = await this.fetchData(`http://api.openweathermap.org/data/2.5/weather?q=minneapolis,us&appid=${API_KEY}&units=imperial`);
     myList.push({city: "minneapolis", temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description, icon: data.weather[0].icon});
 
-    api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=chicago,us&appid=${API_KEY}&units=imperial`);
-    data = await api_call.json();
+    data = await this.fetchData(`http://api.openweathermap.org/data/2.5/weather?q=chicago,us&appid=${API_KEY}&units=imperial`);
     myList.push({city: "chicago", temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description, icon: data.weather[0].icon});
 
-    api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=dallas,us&appid=${API_KEY}&units=imperial`);
-    data = await api_call.json();
+    data = await this.fetchData(`http://api.openweathermap.org/data/2.5/weather?q=dallas,us&appid=${API_KEY}&units=imperial`);
     myList.push({city: "dallas", temperature: data.main.temp, humidity: data.main.humidity, description: data.weather[0].description, icon: data.weather[0].icon});
 
     this.setState({
       default: myList
     });
   }
+
   updateState = async (data, city) => {
     const tempList = this.state.list.slice();
     if(tempList.length == null){//adding first element
